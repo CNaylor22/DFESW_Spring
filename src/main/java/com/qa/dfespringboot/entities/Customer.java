@@ -12,25 +12,23 @@ import javax.persistence.Entity;
 
 public class Customer {
 
-	
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column( nullable = false)
+
+	@Column(nullable = false)
 	private String firstName;
-	
-	@Column (nullable = false)
+
+	@Column(nullable = false)
 	private String lastName;
 
-	@Column (nullable = false, unique = true)
+	@Column(nullable = false, unique = true)
 	private String email;
 
-	// This is the default constructor. 
-	public Customer() {}
-	
-	
+	// This is the default constructor.
+	public Customer() {
+	}
+
 	// No ID constructor, this is for inserting.
 	public Customer(String firstName, String lastName, String email) {
 		super();
@@ -38,12 +36,9 @@ public class Customer {
 		this.lastName = lastName;
 		this.email = email;
 	}
-	
-	
-	
+
 	// All args constructor, this is for reading.
-	
-	
+
 	public Customer(long id, String firstName, String lastName, String email) {
 		super();
 		this.id = id;
@@ -84,20 +79,17 @@ public class Customer {
 		this.email = email;
 	}
 
-
-@Override
-public boolean equals(Object obj) {
-	if (this == obj)
-		return true;
-	if (obj == null)
-		return false;
-	if (getClass() != obj.getClass())
-		return false;
-	Customer other = (Customer) obj;
-	return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
-			&& Objects.equals(lastName, other.lastName);
-}
-
-
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Customer other = (Customer) obj;
+		return Objects.equals(email, other.email) && Objects.equals(firstName, other.firstName) && id == other.id
+				&& Objects.equals(lastName, other.lastName);
+	}
 
 }
